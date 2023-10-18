@@ -65,7 +65,9 @@ def run_eda_app():
             st.pyplot(fig)
 
         with st.expander('Matrix Correlation'):
-            corr = df.corr()
+            df_number = df.select_dtypes(include=['number'])
+            corr = df_number.corr()
+            # st.dataframe(df)
             fig, ax = plt.subplots()
             sns.heatmap(corr,  annot=True, ax=ax, annot_kws={"size":5})
             ax.set_title('Matriks Correlation')
